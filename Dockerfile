@@ -1,5 +1,5 @@
 # Use an official Python runtime as a parent image
-FROM circleci/python:3.6.6
+FROM circleci/php:7.3-node-browsers
 
 # Switch to root user
 USER root
