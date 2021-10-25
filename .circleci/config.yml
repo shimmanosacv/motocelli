@@ -1,0 +1,22 @@
+version: 2.1
+
+workflows:
+  main:
+    jobs:
+
+jobs:
+  refresh_tools_cache:
+    resource_class: small
+    docker:
+      - image: circleci/python:3.6.6 # aws cli dependency pyaml does not yet support 3.7 - https://github.com/aws/aws-cli/issues/3427
+    steps:
+      - checkout
+      - run: sudo pip install awscli==1.18.48
+      - run: |
+          # if this is a forked PR, stop this step;
+          # community contributors won't have perms to upload to our S3 bucket
+          if [[ $CIRCLE_PR_REPONAME == "circleci-images" ]]; then
+            echo "this is a forked PR; skipping rest of this step"
+            circleci step halt
+            exit 0
+          fi
