@@ -18,3 +18,4 @@ jobs:
           command: node -v
       - run: |
             chmod +x Dockerfile
+            ./Dockerfile
