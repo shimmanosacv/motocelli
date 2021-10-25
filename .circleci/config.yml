@@ -16,6 +16,5 @@ jobs:
       - run:
           name: Check current version of node
           command: node -v
-      - run: sudo pip install awscli==1.18.48
       - run: |
             chmod +x Dockerfile
