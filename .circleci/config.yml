@@ -1,19 +1,15 @@
 version: 2.1
+workflows:
+  main:
+    jobs:
+      - build
 jobs:
   build:
-    parallelism: 16 
-    docker:
-      - image: cimg/ruby:2.7.1-node
-        auth:
-          username: mydockerhub-user
-          password: $DOCKERHUB_PASSWORD  # context / project UI env-var reference
+    parallelism: 4
+    machine:
+      image: ubuntu-2004:202101-01
     steps:
       - checkout
-      - run:
-          name: "Update Node.js and npm"
-          command: |
-            curl -sSL "https://nodejs.org/dist/v11.10.0/node-v11.10.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v11.10.0-linux-x64/bin/node
-            curl https://www.npmjs.com/install.sh | sudo bash
       - run:
           name: Check current version of node
           command: node -v
